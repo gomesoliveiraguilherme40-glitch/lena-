@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milena 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px;
+      color: #fff;
+    }
+    h1 {
+      margin-top: 30px;
+      font-size: 2.5rem;
+      text-align: center;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    }
+    .accordion {
+      width: 100%;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+    .accordion-item {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .accordion-header {
+      padding: 15px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .accordion-header:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.3s ease;
+      padding: 0 15px;
+    }
+    .accordion-content.open {
+      padding: 15px;
+    }
+    p {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+    footer {
+      margin-top: 30px;
+      font-size: 1rem;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+    .emoji {
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Milena, nunca te esqueci 💖🐻</h1>
+
+  <div class="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header">Por que eu te amo? ❤️</div>
+      <div class="accordion-content">
+        <p>Porque você me faz sorrir mesmo nos piores dias.</p>
+        <p>Porque o seu jeito é único e inesquecível.</p>
+        <p>Porque ao seu lado eu sempre me senti em casa.</p>
+        <p>Porque você tem um coração lindo e verdadeiro.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">Nunca te esqueci 💭</div>
+      <div class="accordion-content">
+        <p>Mesmo com o tempo passando, você sempre esteve na minha mente.</p>
+        <p>Te confesso: nunca consegui te apagar do coração.</p>
+        <p>Às vezes, basta ouvir uma música e lembro de você imediatamente.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">Momentos inesquecíveis ✨</div>
+      <div class="accordion-content">
+        <p>As nossas risadas juntos sempre ecoam na minha memória.</p>
+        <p>Cada olhar que trocamos foi especial pra mim.</p>
+        <p>Até as conversas mais simples se tornaram lembranças valiosas.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">Promessas 🌹</div>
+      <div class="accordion-content">
+        <p>Prometo que nunca vou esquecer de você.</p>
+        <p>Prometo sempre torcer pela sua felicidade, mesmo de longe.</p>
+        <p>E se a vida permitir, prometo ainda te fazer sorrir mais vezes.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">O que sinto por você 💕</div>
+      <div class="accordion-content">
+        <p>O que sinto por você nunca deixou de existir.</p>
+        <p>Você foi, é, e sempre será especial pra mim.</p>
+        <p>Mesmo que a vida nos leve por caminhos diferentes, você sempre terá um lugar no meu coração.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Com todo meu amor, sempre. 💖🐻
+  </footer>
+
+  <script>
+    const headers = document.querySelectorAll('.accordion-header');
+    headers.forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        content.classList.toggle('open');
+        if (content.classList.contains('open')) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+          content.style.maxHeight = 0;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
