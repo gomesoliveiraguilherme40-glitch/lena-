@@ -1,146 +1,137 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para Milena 💕</title>
+  <title>Milena 💖</title>
   <style>
     body {
       margin: 0;
-      font-family: "Comic Sans MS", cursive, sans-serif;
-      background: linear-gradient(135deg, #ffe4ec, #ffd1f3, #e0bbff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      color: #5a2d82;
+      justify-content: flex-start;
+      padding: 20px;
+      color: #fff;
     }
-
     h1 {
       margin-top: 30px;
       font-size: 2.5rem;
       text-align: center;
-      color: #d63384;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
     }
-
     .accordion {
-      margin: 30px auto;
-      width: 90%;
-      max-width: 600px;
+      width: 100%;
+      max-width: 700px;
+      margin: 20px auto;
     }
-
     .accordion-item {
-      background: white;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      margin-bottom: 10px;
       overflow: hidden;
-      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-
-    .accordion-title {
-      cursor: pointer;
-      padding: 15px 20px;
-      font-size: 1.2rem;
+    .accordion-header {
+      padding: 15px;
+      font-size: 1.3rem;
       font-weight: bold;
-      background: #ffb6c1;
-      color: #5a2d82;
+      cursor: pointer;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
-
-    .accordion-title:hover {
-      background: #ff9bb0;
+    .accordion-header:hover {
+      background: rgba(255, 255, 255, 0.25);
     }
-
     .accordion-content {
       max-height: 0;
       overflow: hidden;
-      padding: 0 20px;
-      background: #fff0f5;
-      color: #333;
-      transition: max-height 0.4s ease, padding 0.3s ease;
+      transition: max-height 0.5s ease, padding 0.3s ease;
+      padding: 0 15px;
     }
-
     .accordion-content.open {
-      padding: 15px 20px;
+      padding: 15px;
     }
-
-    .accordion-content p {
+    p {
       margin: 10px 0;
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
-
     footer {
-      margin-top: auto;
-      padding: 20px;
-      text-align: center;
+      margin-top: 30px;
       font-size: 1rem;
-      color: #5a2d82;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
     }
-
-    /* Ursinhos fofos */
-    .bear {
-      font-size: 2rem;
-      margin: 0 5px;
+    .emoji {
+      font-size: 1.5rem;
     }
   </style>
 </head>
 <body>
-  <h1>Para Milena 💕</h1>
+  <h1>Milena, nunca te esqueci 💖🐻</h1>
+
   <div class="accordion">
     <div class="accordion-item">
-      <div class="accordion-title">🐻 Por que eu te amo?</div>
+      <div class="accordion-header">Por que eu te amo? ❤️</div>
       <div class="accordion-content">
-        <p>Porque você ilumina meus dias ✨</p>
-        <p>Porque seu sorriso é meu lugar favorito 💖</p>
-        <p>Porque me faz sentir especial sempre 🌹</p>
+        <p>Porque você me faz sorrir mesmo nos piores dias.</p>
+        <p>Porque o seu jeito é único e inesquecível.</p>
+        <p>Porque ao seu lado eu sempre me senti em casa.</p>
+        <p>Porque você tem um coração lindo e verdadeiro.</p>
       </div>
     </div>
-
     <div class="accordion-item">
-      <div class="accordion-title">💕 Momentos especiais</div>
+      <div class="accordion-header">Nunca te esqueci 💭</div>
       <div class="accordion-content">
-        <p>A primeira vez que nos divertimos juntos 🎉</p>
-        <p>As conversas até tarde 🌙</p>
-        <p>Todos os abraços que já demos 🫂</p>
+        <p>Mesmo com o tempo passando, você sempre esteve na minha mente.</p>
+        <p>Te confesso: nunca consegui te apagar do coração.</p>
+        <p>Às vezes, basta ouvir uma música e lembro de você imediatamente.</p>
       </div>
     </div>
-
     <div class="accordion-item">
-      <div class="accordion-title">🌸 Promessas</div>
+      <div class="accordion-header">Momentos inesquecíveis ✨</div>
       <div class="accordion-content">
-        <p>Estar sempre ao seu lado 💕</p>
-        <p>Te apoiar em cada sonho 🌠</p>
-        <p>Te amar cada vez mais todos os dias ❤️</p>
+        <p>As nossas risadas juntos sempre ecoam na minha memória.</p>
+        <p>Cada olhar que trocamos foi especial pra mim.</p>
+        <p>Até as conversas mais simples se tornaram lembranças valiosas.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">Promessas 🌹</div>
+      <div class="accordion-content">
+        <p>Prometo que nunca vou esquecer de você.</p>
+        <p>Prometo sempre torcer pela sua felicidade, mesmo de longe.</p>
+        <p>E se a vida permitir, prometo ainda te fazer sorrir mais vezes.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">O que sinto por você 💕</div>
+      <div class="accordion-content">
+        <p>O que sinto por você nunca deixou de existir.</p>
+        <p>Você foi, é, e sempre será especial pra mim.</p>
+        <p>Mesmo que a vida nos leve por caminhos diferentes, você sempre terá um lugar no meu coração.</p>
       </div>
     </div>
   </div>
 
   <footer>
-    <span class="bear">🐻</span>
-    Com todo meu amor, sempre 💖
-    <span class="bear">🐻</span>
+    Com todo meu amor, sempre. 💖🐻
   </footer>
 
   <script>
-    const items = document.querySelectorAll('.accordion-item');
-
-    items.forEach(item => {
-      const title = item.querySelector('.accordion-title');
-      const content = item.querySelector('.accordion-content');
-
-      title.addEventListener('click', () => {
-        const isOpen = content.classList.contains('open');
-        document.querySelectorAll('.accordion-content').forEach(c => {
-          c.style.maxHeight = null;
-          c.classList.remove('open');
-        });
-        if (!isOpen) {
-          content.classList.add('open');
+    const headers = document.querySelectorAll('.accordion-header');
+    headers.forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        content.classList.toggle('open');
+        if (content.classList.contains('open')) {
           content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+          content.style.maxHeight = 0;
         }
       });
     });
