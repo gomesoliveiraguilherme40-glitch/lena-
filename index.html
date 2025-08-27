@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Para Milena 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{
+      --pink:#ee9ca7;
+      --pink-deep:#d96c88;
+      --bg-grad: linear-gradient(135deg,#ffdde1 0%, #ee9ca7 100%);
+      --card:#ffffff;
+      --muted:#666;
+      --text:#333;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
+      color:var(--text);
+      background:var(--bg-grad) fixed;
+      line-height:1.65;
+      overflow-x: hidden;
+      position: relative; /* Para o overlay de estrelas */
+    }
+
+    /* OVERLAY DE ESTRELAS */
+    .star-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1; /* Acima do background, mas abaixo do conteúdo */
+    }
+
+    .star {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      box-shadow: 0 0 8px 4px rgba(255, 255, 255, 0.4);
+      animation: twinkle linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes twinkle {
+      0% { transform: translateY(100vh) translateX(-10vw) scale(0.5); opacity: 0; }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.8; }
+      100% { transform: translateY(-10vh) translateX(10vw) scale(1.2); opacity: 0; }
+    }
+
+    /* NAV TOP */
+    .topbar{
+      position:fixed; top:0; left:0; right:0;
+      height:64px; display:flex; align-items:center; justify-content:space-between;
+      padding:0 18px;
+      background:rgba(255,255,255,.88);
+      backdrop-filter: blur(8px);
+      box-shadow:0 8px 20px rgba(0,0,0,.08);
+      z-index:1000;
+    }
+    .brand{
+      font-family:'Montserrat',sans-serif;
+      font-weight:900;
+      letter-spacing:1px;
+      color:var(--pink-deep);
+      display:flex; align-items:center; gap:10px;
+    }
+    .brand .logo-dot{
+      width:10px;height:10px;border-radius:50%;background:var(--pink-deep);
+      box-shadow:0 0 0 6px rgba(217,108,136,.15);
+    }
+    .menu-btn{
+      font-weight:600;
+      color:var(--pink-deep);
+      border:1px solid rgba(217,108,136,.35);
+      padding:8px 14px;border-radius:999px; background:#fff;
+      cursor:pointer; transition:.25s;
+    }
+    .menu-btn:hover{ background:var(--pink); color:#fff; border-color:transparent; }
+
+    /* SIDEPANEL MENU (Left) */
+    .sidepanel{
+      position:fixed; top:0; left:-360px;
+      width:320px; height:100vh;
+      background:#fff; box-shadow:8px 0 24px rgba(0,0,0,.12);
+      transition:left .35s ease;
+      z-index:1100; /* Z-index alto para ficar acima de tudo */
+      display:flex; flex-direction:column;
+    }
+    .sidepanel.open{ left:0; }
+    .panel-head{
+      padding:20px; background:var(--pink);
+      color:#fff; display:flex; justify-content:space-between; align-items:center;
+    }
+    .panel-title{ font-family:'Montserrat',sans-serif; font-weight:900; letter-spacing:.5px; }
+    .close-btn{ background:rgba(255,255,255,.2); border:none; color:#fff; padding:6px 10px; border-radius:8px; cursor:pointer }
+    .panel-links{ padding:18px; display:grid; gap:10px; }
+    .panel-links a{
+      text-decoration:none; color:var(--text); padding:12px 14px; border-radius:12px;
+      border:1px solid rgba(0,0,0,.06); background:#fff; display:flex; align-items:center; gap:10px;
+      transition:.2s;
+    }
+    .panel-links a:hover{ border-color: var(--pink); box-shadow:0 6px 18px rgba(238,156,167,.15); }
+
+    .support{
+      margin-top:auto; padding:18px; border-top:1px solid rgba(0,0,0,.06);
+    }
+    .support .title{
+      font-weight:700;
+      margin-bottom:8px;
+      font-size: 1em;
+      line-height: 1.2;
+      word-wrap: break-word;
+    }
+    .whats{
+      display:flex; align-items:center; gap:10px;
+      padding:12px 14px; border-radius:12px; background:#e7f7ee;
+      border:1px solid #b8e2c3; text-decoration:none; color:#11643d; font-weight:600;
+      transition:.2s;
+      justify-content: center;
+    }
+    .whats i {
+      flex-shrink: 0;
+    }
+    .whats span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .whats:hover{ transform: translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,.08); }
+
+    /* Conteúdo Principal e Seções */
+    main{
+      margin-top: 64px;
+      position: relative; /* Garante que o z-index funcione em relação aos corações */
+      z-index: 10; /* Z-index para o conteúdo principal, acima dos corações */
+    }
+    .section{ display: none; padding: 20px 18px; max-width: 1100px; margin: 0 auto; }
+    .section.active{ display: block; }
+    .container { max-width:1100px; margin:70px auto; padding:0 18px; }
+
+    /* HERO */
+    .hero-header{
+      position:relative; height:92vh; min-height:560px; display:grid; place-items:center;
+      text-align:center; color:#fff; overflow:hidden;
+      z-index: 5; /* Garante que o hero fique acima dos corações também */
+    }
+    .hero-bg{
+      position:absolute; inset:0;
+      background:url('assets/fundo.jpg') center/cover no-repeat;
+      filter:brightness(.7);
+    }
+    .hero-inner{ position:relative; z-index:1; padding:0 18px; }
+    .title{
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size: clamp(2.8rem, 5vw, 5rem);
+      letter-spacing:2px; text-shadow:0 10px 30px rgba(0,0,0,.4);
+    }
+    .subtitle, .section-subtitle{ margin-top:8px; opacity:.95; color: var(--muted); }
+    .hero-header .title, .hero-header .subtitle { color: #fff; }
+
+    /* CONTENT */
+    .cards{ display:grid; gap:20px; position: relative; z-index: 5; } /* Z-index para os cards */
+    .card{
+      background:var(--card); border-radius:18px; padding:22px;
+      box-shadow:0 10px 30px rgba(0,0,0,.08); transition:.25s;
+    }
+    .card:hover{ transform: translateY(-4px) }
+    .card strong{ color:var(--pink-deep); font-size:1.2rem }
+
+    /* Accordion-like text items */
+    .text-items{ display:grid; gap:12px; margin-top:14px; }
+    .text-item{
+      background: #fff6f8;
+      border:1px solid rgba(238,156,167,.35);
+      border-radius:14px; padding:12px 14px; color: #4a4a4a;
+      box-shadow: 0 4px 12px rgba(238,156,167,.12);
+    }
+
+    /* Gallery */
+    .gallery{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:18px; margin-top:28px; position: relative; z-index: 5; }
+    .gallery img{
+      width:100%; height:260px; object-fit:cover; border-radius:16px;
+      box-shadow:0 10px 24px rgba(0,0,0,.15); transition:.25s;
+    }
+    .gallery img:hover{ transform:scale(1.03) }
+
+    /* Fotos section */
+    .fotos h2, .music h2, .galeria h2 {
+      font-family:'Montserrat',sans-serif; font-weight:900; color:var(--pink-deep);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      margin-bottom:18px;
+      text-align: center;
+    }
+    .fotos p, .music p { text-align: center; }
+    .fotos-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:20px; margin-top:24px; position: relative; z-index: 5; }
+    .fotos-grid img{ width:100%; height:280px; object-fit:cover; border-radius:18px; box-shadow:0 10px 24px rgba(0,0,0,.12) }
+
+    /* Music section */
+    .music-card a { text-decoration: none; color: var(--text); }
+    .music-card a:hover { color: var(--pink-deep); }
+    .music-card strong { text-align: center; display: block; }
+
+    footer{
+      max-width:1100px; margin:80px auto 40px; padding:18px; text-align:center;
+      color:#fff; background:var(--pink-deep);
+      border-radius:18px; box-shadow:0 12px 28px rgba(0,0,0,.12);
+      position: relative; z-index: 5; /* Z-index para o footer */
+    }
+
+    /* Floating Hearts Animation */
+    .heart-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0; /* Corações no fundo */
+    }
+    .heart {
+      position: absolute;
+      background-color: var(--pink);
+      transform: rotate(-45deg);
+      animation: floatHeart linear infinite;
+      opacity: 0;
+      z-index: 0;
+    }
+    .heart:before, .heart:after {
+      content: '';
+      position: absolute;
+      width: 100%; height: 100%;
+      background-color: var(--pink);
+      border-radius: 50%;
+    }
+    .heart:before { top: -50%; left: 0; }
+    .heart:after { top: 0; left: 50%; }
+    @keyframes floatHeart {
+      0% { transform: translateY(100vh) rotate(-45deg); opacity: 0; }
+      25% { opacity: 1; }
+      75% { opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(-45deg); opacity: 0; }
+    }
+
+    @media (max-width:640px){
+      .panel-links{ gap:8px }
+      .fotos-grid img{ height:240px }
+      .gallery img{ height:220px }
+    }
+  </style>
+</head>
+<body>
+  <div class="heart-container"></div>
+  <div class="star-overlay"></div>
+  <div class="topbar">
+    <button class="menu-btn" id="openMenu">Menu</button>
+    <div class="brand"><span class="logo-dot"></span> Para Milena</div>
+  </div>
+  
+  <aside class="sidepanel" id="sidepanel">
+    <div class="panel-head">
+      <div class="panel-title">Menu</div>
+      <button class="close-btn" id="closeMenu">Fechar</button>
+    </div>
+    <nav class="panel-links">
+      <a href="#" class="nav-link" data-target="home">🏠 Página inicial</a>
+      <a href="#" class="nav-link" data-target="fotos">📸 Fotos da menina mais gata que eu conheço</a>
+      <a href="#" class="nav-link" data-target="music">🎶 Nossas Músicas</a>
+      <a href="#" class="nav-link" data-target="galeria">🖼️ Galeria</a>
+      <a href="#" class="nav-link" data-target="sobre">ℹ️ Sobre este site</a>
+    </nav>
+    <div class="support">
+      <div class="title">Fale comigo!</div>
+      <a class="whats" target="_blank" rel="noopener" href="https://wa.me/5599984881886">
+        <i class="fab fa-whatsapp"></i><span>WhatsApp</span>
+      </a>
+    </div>
+  </aside>
+  
+  <main>
+    <section id="home" class="section active">
+      <header class="hero-header">
+        <div class="hero-bg"></div>
+        <div class="hero-inner">
+          <h1 class="title">Para Milena 💖🐻</h1>
+          <p class="subtitle">QUando der saudade e eu não estiver, venha aqui</p>
+        </div>
+      </header>
+      <div class="cards">
+        <div class="card">
+          <strong>Coisas que sinto (:</strong>
+          <div class="text-items">
+            <div class="text-item">Você sempre esteve no meu coração.</div>
+            <div class="text-item">Mesmo com tudo que aconteceu, ainda penso em você.</div>
+            <div class="text-item">As lembranças que temos são especiais.</div>
+          </div>
+        </div>
+        <div class="card">
+          <strong>Você sempre esteve na minha mente</strong>
+          <div class="text-items">
+            <div class="text-item">Não consigo esquecer seus sorrisos e aqueles beijinhos na testa que eu te dava.</div>
+            <div class="text-item">Às vezes basta uma música para me lembrar de você. (medo bobo)</div>
+            <div class="text-item">Você marcou minha vida.</div>
+          </div>
+        </div>
+        <div class="card">
+          <strong>Nossas lembranças</strong>
+          <div class="text-items">
+            <div class="text-item">Rir juntos de coisas bobas sempre foi incrível, princesa.</div>
+            <div class="text-item">Cada conversa nossa foi especial. (e bem especial kakakak)</div>
+            <div class="text-item">Momentos simples se tornaram inesquecíveis. (você é foda S2)</div>
+          </div>
+        </div>
+        <div class="card">
+          <strong>O que ainda quero dizer</strong>
+          <div class="text-items">
+            <div class="text-item">Espero que você seja sempre feliz. (com ou sem mim)</div>
+            <div class="text-item">Você SEMPRE terá um lugar especial no meu coração.</div>
+            <div class="text-item">Mesmo com o tempo, meus sentimentos permanecem.</div>
+          </div>
+        </div>
+        <div class="card">
+          <strong>Promessas</strong>
+          <div class="text-items">
+            <div class="text-item">Prometo que nunca vou esquecer de você.</div>
+            <div class="text-item">Se a vida permitir, ainda quero te fazer sorrir.</div>
+            <div class="text-item">Sempre vou torcer pela sua felicidade.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fotos" class="section">
+      <div class="container">
+        <h2>Fotos da menina mais gata que eu conheço 💕</h2>
+        <p class="section-subtitle">É muuuuito gata.</p>
+        <div class="fotos-grid">
+          <img src="assets/milena1.jpg" alt="Milena 1">
+          <img src="assets/milena2.jpg" alt="Milena 2">
+          <img src="assets/milena3.jpg" alt="Milena 3">
+          <img src="assets/milena4.jpg" alt="Milena 4">
+        </div>
+      </div>
+    </section>
+
+    <section id="music" class="section">
+      <div class="container">
+        <h2>Nossas Músicas 🎶</h2>
+        <p class="section-subtitle">.</p>
+        <div class="cards">
+          <div class="card music-card">
+            <strong><a href="https://www.youtube.com/watch?v=6hvnA8DhO6s" target="_blank" rel="noopener">Murart - Acerola</a></strong>
+          </div>
+          <div class="card music-card">
+            <strong><a href="https://www.youtube.com/watch?v=Jzl_nrTkfIM" target="_blank" rel="noopener">Maiara & Maraisa - Medo Bobo</a></strong>
+          </div>
+          <div class="card music-card">
+            <strong><a href="https://www.youtube.com/watch?v=H2qQ4kqEVJ8" target="_blank" rel="noopener">Gian & Giovani - O Grande Amor da Minha Vida</a></strong>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="galeria" class="section">
+      <div class="container">
+        <h2>Galeria 🖼️</h2>
+        <p class="section-subtitle">Mais momentos especiais.</p>
+        <div class="gallery">
+          <img src="assets/exemplo1.jpg" alt="Exemplo 1">
+          <img src="assets/exemplo2.jpg" alt="Exemplo 2">
+          <img src="assets/exemplo3.jpg" alt="Exemplo 3">
+          <img src="assets/exemplo4.jpg" alt="Exemplo 4"> 
+        </div>
+      </div>
+    </section>
+  
+    <section id="sobre" class="section">
+      <div class="container">
+        <div class="card">
+          <strong>Isso é pra você ver o quanto é especial pra mim</strong>
+          <p class="section-subtitle">Você tem um lugar guardado no meu coração, eu te amo! </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Com todo meu carinho. ass: Guilherme 💖🐻
+  </footer>
+  
+  <script>
+    // Sidepanel toggles
+    const openBtn = document.getElementById('openMenu');
+    const closeBtn = document.getElementById('closeMenu');
+    const panel = document.getElementById('sidepanel');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    openBtn.addEventListener('click', () => panel.classList.add('open'));
+    closeBtn.addEventListener('click', () => panel.classList.remove('open'));
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (panel.classList.contains('open')) {
+        const inside = panel.contains(e.target) || openBtn.contains(e.target);
+        if (!inside) panel.classList.remove('open');
+      }
+    });
+
+    // Navigation logic to show/hide sections
+    function showSection(targetId) {
+      document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+      panel.classList.remove('open');
+    }
+
+    // Attach event listeners to navigation links
+    navLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const targetId = link.getAttribute('data-target');
+        showSection(targetId);
+      });
+    });
+
+    // Floating Hearts Generation
+    const heartContainer = document.querySelector('.heart-container');
+    let heartCount = 0; // Contador de corações
+    const maxHearts = 15; // Número máximo de corações na tela
+
+    function createHeart() {
+      if (heartCount >= maxHearts) {
+        return; // Não cria mais corações se o limite for atingido
+      }
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heartContainer.appendChild(heart);
+
+      heart.style.width = Math.random() * 20 + 10 + 'px';
+      heart.style.height = heart.style.width;
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 6 + 5 + 's';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+
+      heartCount++; // Incrementa o contador
+
+      heart.addEventListener('animationend', () => {
+        heart.remove();
+        heartCount--; // Decrementa o contador quando o coração sai da tela
+      });
+    }
+
+    setInterval(createHeart, 800);
+    // Cria alguns corações iniciais, mas respeitando o limite
+    for (let i = 0; i < maxHearts / 2; i++) { // Começa com metade do máximo
+      createHeart();
+    }
+
+    // Floating Stars Generation
+    const starOverlay = document.querySelector('.star-overlay');
+
+    function createStar() {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      starOverlay.appendChild(star);
+
+      const size = Math.random() * 3 + 1; // Estrelas entre 1px e 4px
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * 100 + 'vh'; // Começa em posições aleatórias
+      star.style.animationDuration = Math.random() * 15 + 10 + 's'; // Duração mais longa
+      star.style.animationDelay = Math.random() * 10 + 's'; // Atraso para aparecerem gradualmente
+
+      star.addEventListener('animationend', () => {
+        star.remove();
+      });
+    }
+
+    // Cria um número inicial de estrelas e depois continua criando
+    for (let i = 0; i < 30; i++) { // Mais estrelas para um efeito mais visível
+      createStar();
+    }
+    setInterval(createStar, 1000); // Cria novas estrelas a cada segundo
+  </script>
+</body>
+</html>
