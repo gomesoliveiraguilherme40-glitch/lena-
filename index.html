@@ -314,26 +314,25 @@
     /* Estilos para as Recordações Misteriosas */
     .recordacoes-item {
       position: relative;
-      overflow: hidden; /* Garante que o zoom da imagem não transborde */
+      overflow: hidden;
       border-radius: 18px;
       box-shadow:0 10px 24px rgba(0,0,0,.12);
-      cursor: pointer;
+      cursor: pointer; /* Adiciona o cursor de "clicável" ao contêiner */
     }
 
     .recordacoes-item img {
       width: 100%;
-      height: 600px; /* Mantém a altura */
+      height: 600px;
       object-fit: cover;
       object-position: center;
       border-radius: 18px;
-      /* Aplica o desfoque e escala de cinza */
       filter: blur(15px) grayscale(100%);
-      transform: scale(1.05); /* Pequeno zoom para preencher melhor e dar ar de thumbnail */
-      transition: filter 0.5s ease, transform 0.5s ease; /* Transição suave para o efeito */
+      transform: scale(1.05);
+      transition: filter 0.5s ease, transform 0.5s ease;
     }
 
     .recordacoes-item:hover img {
-      filter: blur(8px) grayscale(70%); /* Menos desfoque no hover */
+      filter: blur(8px) grayscale(70%);
       transform: scale(1.03);
     }
 
@@ -343,17 +342,17 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.4); /* Escurece a imagem desfocada */
+      background-color: rgba(0, 0, 0, 0.4);
       border-radius: 18px;
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 2; /* Fica acima da imagem */
+      z-index: 2;
       transition: background-color 0.3s ease;
     }
 
     .recordacoes-item:hover .recordacoes-overlay {
-      background-color: rgba(0, 0, 0, 0.2); /* Menos escuro no hover */
+      background-color: rgba(0, 0, 0, 0.2);
     }
 
     .recordacoes-overlay .fa-lock {
@@ -379,7 +378,7 @@
         height:220px;
       }
       .recordacoes-item img {
-        height: 500px; /* Ajusta a altura também para mobile */
+        height: 500px;
       }
     }
   </style>
@@ -657,14 +656,25 @@
     // Lightbox functionality
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-    // Agora seleciona apenas as imagens dentro de .gallery, .fotos-grid e .recordacoes-item
-    const clickableImages = document.querySelectorAll('.gallery img, .fotos-grid img, .recordacoes-item img');
+    const clickableItems = document.querySelectorAll('.gallery img, .fotos-grid img, .recordacoes-item');
 
-    clickableImages.forEach(image => {
-      image.addEventListener('click', (e) => {
+    clickableItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        let imgSrc;
+        let imgAlt;
+
+        if (item.classList.contains('recordacoes-item')) {
+          const imgElement = item.querySelector('img');
+          imgSrc = imgElement.src;
+          imgAlt = imgElement.alt;
+        } else {
+          imgSrc = item.src;
+          imgAlt = item.alt;
+        }
+
         lightbox.classList.add('active');
-        lightboxImg.src = e.target.src;
-        lightboxImg.alt = e.target.alt;
+        lightboxImg.src = imgSrc;
+        lightboxImg.alt = imgAlt;
       });
     });
 
